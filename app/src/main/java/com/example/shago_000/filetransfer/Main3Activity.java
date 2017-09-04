@@ -66,10 +66,8 @@ public class Main3Activity extends Activity{
         Toast.makeText(Main3Activity.this,"Connected", Toast.LENGTH_LONG).show();
         try {
             inFromServer = new BufferedInputStream(MainActivity.clientSocket.getInputStream());
-             outToServer = new BufferedOutputStream(MainActivity.clientSocket.getOutputStream());
-        }catch(Exception e){
-
-        }
+            outToServer = new BufferedOutputStream(MainActivity.clientSocket.getOutputStream());
+        }catch(Exception e){}
         File sdCard = Environment.getExternalStorageDirectory();
         dir = new File(sdCard.getAbsolutePath() + "/Files");
         dir.mkdirs();

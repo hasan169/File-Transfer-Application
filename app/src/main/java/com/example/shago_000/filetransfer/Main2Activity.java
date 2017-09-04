@@ -116,12 +116,10 @@ public class Main2Activity extends Activity {
                     if(Type.length() >= 5 ){
                         if(Type.substring(0,5).equals("image")){
                             isFile = false;
-                        }
-                        else{
+                        } else{
                             isFile = true;
                         }
-                    }
-                    else{
+                    } else{
                         isFile = true;
                     }
                 }
@@ -133,17 +131,20 @@ public class Main2Activity extends Activity {
                     }
                     fileName = fileName + ".png";
                     updateUI();
-                }
-                else {
+                } else {
                     isAudio = false;
                     if( Type != null ){
                         if(Type.substring(0,5).equals("audio")){
+                            fileName = fileName +".mp3";
+                            isAudio = true;
+                        }
+                        else if(Type.substring(0,5).equals("video")){
+                            fileName = fileName +".mp4";
                             isAudio = true;
                         }
                     }
                     if(isAudio) {
                         try {
-                            fileName = fileName +".mp3";
                             iStream = getContentResolver().openInputStream(uri);
                             Cursor cursor = this.getContentResolver().query(uri,
                                     null, null, null, null);
@@ -153,8 +154,7 @@ public class Main2Activity extends Activity {
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
-                    }
-                    else{
+                    } else{
                         fileTosend = new File(uri.getPath());
                         fileSize = fileTosend.length();
                     }
@@ -266,8 +266,7 @@ public class Main2Activity extends Activity {
                                     String len = String.valueOf(fileSize);
                                     outToClient.write(len.getBytes());
                                     outToClient.flush();
-                                }
-                                else{
+                                } else{
                                     makeProgresbar();
                                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                                     byteArray = stream.toByteArray();
@@ -308,8 +307,7 @@ public class Main2Activity extends Activity {
                                     iStream.close();
                                     progressDialog.dismiss();
                                     outToClient.flush();
-                                }
-                                else {
+                                } else {
                                     finalConfirmation = false;
                                     inFromClient.read(data, 0, data.length);
                                     RandomAccessFile raf = new RandomAccessFile(fileTosend, "r");
@@ -326,8 +324,7 @@ public class Main2Activity extends Activity {
                                     outToClient.flush();
                                     raf.close();
                                 }
-                            }
-                            else{
+                            } else{
                                 inFromClient.read(data, 0, data.length);
                                 finalConfirmation = false;
                                 for(int i = 0; i < byteArray.length; i++){
