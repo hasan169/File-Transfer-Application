@@ -31,11 +31,9 @@ import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import static android.R.attr.name;
 
 public class Main2Activity extends Activity {
-
     Activity activity;
     ProgressDialog progressDialog;
     int progressStatus;
@@ -56,6 +54,7 @@ public class Main2Activity extends Activity {
     byte[] byteArray;
     InputStream iStream;
     ByteArrayOutputStream stream;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +75,6 @@ public class Main2Activity extends Activity {
                 intent.setType("*/*");
                 startActivityForResult(intent,42);
             }
-
         });
         final Button conn = (Button) findViewById(R.id.connection);
         conn.setOnClickListener(new View.OnClickListener() {
