@@ -65,7 +65,6 @@ public class Main2Activity extends Activity {
             outToClient = new BufferedOutputStream(MainActivity.connectionSocket.getOutputStream());
             inFromClient = new BufferedInputStream(MainActivity.connectionSocket.getInputStream());
         } catch (Exception e) {
-
         }
         activity = this;
         final Button fileChoose = (Button) findViewById(R.id.choose);
@@ -159,7 +158,6 @@ public class Main2Activity extends Activity {
                     updateUI();
                 }
             }
-
         }
     }
     Handler handle = new Handler();
